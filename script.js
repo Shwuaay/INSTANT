@@ -20,7 +20,7 @@ window.onYouTubeIframeAPIReady = function() {
       autoplay: 0,
       controls: 0,
       loop: 1,
-      playlist: "wT5472vOXdo",
+      playlist: "1JltlSJH5bY",
       enablejsapi: 1
     },
     events: {
