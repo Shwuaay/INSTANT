@@ -24,7 +24,7 @@ window.onYouTubeIframeAPIReady = function() {
       enablejsapi: 1
     },
     events: {
-      onReady: () => { 
+      onReady: (event) => { 
         apiReady = true;
         console.log("YouTube player ready");
       }
@@ -123,16 +123,27 @@ btn.addEventListener("click", () => {
       // Afficher le message avec animation
       message.style.display = "block";
       
-      // Lancer la musique si prête
-      if (apiReady && player) {
-        try {
-          player.playVideo();
-          player.setVolume(60); // Volume à 60%
-          console.log("Music started");
-        } catch (e) {
-          console.log("Erreur lecture musique:", e);
+      // Lancer la musique - Méthode améliorée
+      setTimeout(() => {
+        if (player && player.playVideo) {
+          try {
+            player.setVolume(60);
+            player.playVideo();
+            console.log("Musique lancée");
+          } catch (e) {
+            console.error("Erreur lecture musique:", e);
+          }
+        } else {
+          console.log("Player pas encore prêt, nouvelle tentative...");
+          // Réessayer après 500ms si le player n'est pas prêt
+          setTimeout(() => {
+            if (player && player.playVideo) {
+              player.setVolume(60);
+              player.playVideo();
+            }
+          }, 500);
         }
-      }
+      }, 100);
       
       // Démarrer les animations
       // Pluie de cœurs continue
