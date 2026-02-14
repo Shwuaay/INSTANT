@@ -15,7 +15,7 @@ document.body.appendChild(tag);
 // Fonction appelée automatiquement par l'API YouTube
 window.onYouTubeIframeAPIReady = function() {
   player = new YT.Player("player", {
-    videoId: "wT5472vOXdo",
+    videoId: "1JltlSJH5bY",
     playerVars: {
       autoplay: 0,
       controls: 0,
